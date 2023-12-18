@@ -1,5 +1,21 @@
 <script setup>
 import Card from './components/Card.vue'
+import Swiper from 'swiper'
+import { Navigation } from 'swiper/modules'
+// import Swiper and modules styles
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+
+window.addEventListener('load', () => {
+  var swiper = new Swiper('.mySwiper', {
+    modules: [Navigation],
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    }
+  })
+})
 </script>
 
 <template>
@@ -46,7 +62,74 @@ import Card from './components/Card.vue'
         </div>
       </div>
     </header>
-    <main class="main"></main>
+    <main class="main">
+      <div class="container">
+        <!-- Swiper -->
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="banner-item">
+                <div class="banner-item__content">
+                  <div class="banner-item__logo">
+                    <img src="./assets/addidas.png" alt="" />
+                  </div>
+                  <div class="banner-item__name"><span>Stan Smith,</span>Forever!</div>
+                  <button class="banner-iten__button">Купить</button>
+                </div>
+                <!-- banner-item__content -->
+                <img src="./assets/banner.jpg" alt="" class="banner-item__image" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="banner-item">
+                <div class="banner-item__content">
+                  <div class="banner-item__logo">
+                    <img src="./assets/addidas.png" alt="" />
+                  </div>
+                  <div class="banner-item__name"><span>Stan Smith,</span>Forever!</div>
+                  <button class="banner-iten__button">Купить</button>
+                </div>
+                <!-- banner-item__content -->
+                <img src="./assets/banner.jpg" alt="" class="banner-item__image" />
+              </div>
+            </div>
+          </div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+        <section class="section">
+          <div class="section__head">
+            <div class="section__left">
+              <h2 class="section__title">Все кроссовки</h2>
+            </div>
+          </div>
+          <div class="catalog">
+            <div class="catalog__row">
+              <div class="catalog__item-container">
+                <div class="catalog-item">
+                  <div class="catalog-item__image">
+                    <a class="catalog-item__name" href="#">
+                      Мужские Кроссовки Nike Blazer Mid Suede
+                    </a>
+                    <div class="catalog-item__botton">
+                      <div class="catalog-item__price">
+                        <div class="catalog-item__label">Цена:</div>
+                        <div class="catalog-item__value">12 999 руб.</div>
+                      </div>
+                    </div>
+                    <button class="catalog-item_fav">
+                      <svg>
+                        <use href="./assets/sprite.svg#zmdi_favorite-outline"></use>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
   </div>
 </template>
 
@@ -113,5 +196,74 @@ body {
 }
 .menu_icon--cart {
   stroke: #9b9b9b;
+}
+.menu__list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.menu__link {
+  display: flex;
+  align-items: center;
+  color: #5c5c5c;
+  font-size: 14px;
+  line-height: normal;
+  text-decoration: none;
+}
+.menu__item + .menu__item {
+  margin-left: 23px;
+}
+.menu__icon {
+  flex-shrink: 0;
+  margin-right: 8px;
+}
+/* ctart slider */
+.banner-item {
+  position: relative;
+  padding: 16px 0 52px 20px;
+  border-radius: 20px;
+  background: #f4efe9;
+}
+.banner-item__image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+}
+.banner-item__content {
+  position: relative;
+  z-index: 20px;
+  padding-left: 41px;
+  max-width: 250px;
+}
+.banner-item__logo {
+  margin-left: -41px;
+  margin-bottom: 32px;
+}
+.banner-item__name {
+  color: #000;
+  font-size: 38px;
+  font-weight: 700;
+}
+.banner-item__name span {
+  color: #a5d364;
+}
+.banner-item__button {
+  display: inline-flex;
+  padding: 15px 55px;
+  outline: none;
+  border: none;
+  border-radius: 110px;
+  background: #a5d364;
+  cursor: pointer;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.main {
+  padding-top: 45px;
 }
 </style>

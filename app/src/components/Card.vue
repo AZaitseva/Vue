@@ -6,7 +6,7 @@
 //     }
 //   },
 //   methods: {
-//     icriment() {
+//     incriment() {
 //       this.count++
 //     }
 //   }
@@ -26,23 +26,23 @@ defineProps({
 </script>
 
 <template>
-  <header>
-    <div class="container">
-      <div class="menu"></div>
-    </div>
-  </header>
   <div class="card">
     <div class="card__title">{{ title }}</div>
-    <div class="card__price">{{ price }}</div>
+    <div class="card__price">{{ price }} руб.</div>
+    {{ isAdded }}
+    <slot></slot>
     <!-- <h2>{{ count }}</h2>
     <button @click="incriment()">Добавить 1</button>
     <input v-model="count" /> -->
   </div>
 </template>
 
-<style scoped>
-/* body {
-  background-color: #000;
-  color: #fff;
-} */
+<style>
+body {
+  background-color: black;
+}
+.card__title {
+  font-size: 100px;
+  color: aqua;
+}
 </style>
