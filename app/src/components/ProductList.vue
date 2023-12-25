@@ -1,21 +1,7 @@
 <script>
+import productMixin from './productMixin'
 export default {
-  data() {
-    return {
-      products: []
-    }
-  },
-  mounted() {
-    this.fetchProduct()
-  },
-  methods: {
-    async fetchProduct() {
-      try {
-        const response = await this.$axios.get('https://fakestoreapi.com/products')
-        this.products = response.data
-      } catch (error) {}
-    }
-  }
+  mixins: [productMixin]
 }
 </script>
 <template>
@@ -37,9 +23,12 @@ export default {
               <div class="catalog-item__label">Цена:</div>
               <div class="catalog-item__value">{{ product.price }} руб.</div>
             </div>
-            <button class="catalog-item__cart">
-              <svg>
+            <button class="catalog-item__cart" @click="addToCart(product)">
+              <svg v-if="!isInCart(product)">
                 <use href="../assets/sprite.svg#icon-plus"></use>
+              </svg>
+              <svg v-else>
+                <use href="../assets/sprite.svg#icon-check"></use>
               </svg>
             </button>
           </div>
@@ -48,9 +37,3 @@ export default {
     </div>
   </div>
 </template>
-<style>
-.catalog-item__image img {
-  max-width: 100%;
-  max-width: 112px;
-}
-</style>
