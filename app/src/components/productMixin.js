@@ -2,7 +2,8 @@ export default {
   data() {
     return {
       products: [],
-      cart: []
+      cart: [],
+      showCart: false
     }
   },
   mounted() {
